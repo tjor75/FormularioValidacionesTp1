@@ -1,40 +1,51 @@
 const formulario = document.getElementById("formulario");
-const nombreCompleto = document.getElementById("nombreCompleto");
+const nombre = document.getElementById("nombre");
 const email = document.getElementById("email");
 const contrasenia = document.getElementById("contrasenia");
 const confirmarContrasenia = document.getElementById("confirmarContrasenia");
-
-function comprobarTieneNumero(cadena) {
-    return cadena.includes(caracter => !isNaN(caracter));
-}
+let enviable;
 
 function comprobarTieneLetra(cadena) {
-    return cadena.includes(caracter => /^[A-Za-z]$/.test(caracter));
+    return /[A-Za-z]/.test(cadena);
+}
+function comprobarTieneNumero(cadena) {
+    return cadena.split("").some(caracter => !isNaN(caracter));
 }
 
-function comprobarEmail(cadena) {
-    return cadena.includes(caracter => caracter === '@');
-}
-
-formulario.addEventListener("change", () => {
-    alert(email.value)
-    alert(comprobarEmail(email.value));
-
-
-    /*if (nombreCompleto.value.length < 3) {
-        alert("Nombre inválido");
+// Eventos
+// submit         Se envía el formulario
+// change (antes) Se termina de cambiar
+// input (ahora)  Se está cambiando
+formulario.addEventListener("input", () => {
+    if (nombre.value.length < 3) {
+        console.error("Nombre inválido");
     }
 
-    if (!comprobarEmail(email.value)) {
-        alert("E-mail inválido");
+    /*
+      Aparentemente, el includes lo estabamos usando mal... (upsis)
+      includes
+      |-> Busca si el parametro está en la cadena/vector
+      \-> Acepta un parametro donde debe estar
+      some
+      |-> Este es el que creia que estabamos usando. este acepta funciones que
+      |   chequean condiciones
+      \-> Solo acepta arrays
+      BONUS: Si queres que te devuelva directamente en string que estás
+      buscando en un array: find para que te de varias opciones y findOne para
+      que solo sea una.
+    */
+    if (!email.value.includes("@")) {
+        console.log("E-mail inválido", email.value.includes("@"));
     }
 
-    alert(contrasenia.value);
-    if (contrasenia.value.length < 8 || !comprobarTieneLetra(contrasenia.value) || !comprobarTieneNumero(contrasenia.value)){
-        alert("Contraseña Invalida")
-    } else if (confirmarContrasenia.value.length >= 0 && contrasenia.value === confirmarContrasenia.value) {
-        alert("Contraseñas no coinciden");
-    }*/
+    if (contrasenia.value.length < 8 ||
+        !comprobarTieneLetra(contrasenia.value) ||
+        !comprobarTieneNumero(contrasenia.value)){
+        console.error("Contraseña Invalida");
+    } else if (confirmarContrasenia.value.length >= 0 &&
+        contrasenia.value === confirmarContrasenia.value) {
+        console.error("Contraseñas no coinciden");
+    }
 });
 formulario.addEventListener("submit", evento => {
     evento.preventDefault();
