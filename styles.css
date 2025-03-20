@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+body, button, input {
+    font-family: "Roboto Mono", sans-serif;
+    font-weight: bold;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    
+    background-image: url("img/istockphoto-1460853312-612x612.jpg");
+}
+input:focus {
+    box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
+}
+form {
+    background: #fff;
+    width: 80%;
+    padding: 8px;
+}
+div:has(> input) {
+    display: flex;
+    flex-direction: column;
+}
