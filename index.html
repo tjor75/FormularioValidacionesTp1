@@ -11,18 +11,22 @@
         <div>
             <label for="nombre">Nombre completo</label>
             <input type="text" id="nombre">
+            <p id="nombreError">Mínimo 3 caracteres</p>
         </div>
         <div>
             <label for="email">Email</label>
             <input type="email" id="email">
+            <p id="emailError">Formato válido</p>
         </div>
         <div>
             <label for="contrasenia">Contraseña</label>
-            <input type="password" id="contrasenia" minlength="8">
+            <input type="password" id="contrasenia">
+            <p id="contraseniaError">Mínimo 8 caracteres, un número y una letra</p>
         </div>
         <div>
             <label for="confirmarContrasenia">Confirmar contraseña</label>
-            <input type="password" id="confirmarContrasenia" minlength="8">
+            <input type="password" id="confirmarContrasenia">
+            <p id="confirmarContraseniaError">No es igual</p>
         </div>
         <input type="submit" value="Enviar">
         <input type="reset" value="Reset">

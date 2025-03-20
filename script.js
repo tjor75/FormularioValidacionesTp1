@@ -1,10 +1,19 @@
 const formulario = document.getElementById("formulario");
-const nombre = document.getElementById("nombre");
-const email = document.getElementById("email");
-const contrasenia = document.getElementById("contrasenia");
-const confirmarContrasenia = document.getElementById("confirmarContrasenia");
+const nombreError = document.getElementById("nombreError");
+const emailError = document.getElementById("emailError");
+const contraseniaError = document.getElementById("contraseniaError");
+const confirmarContraseniaError = document.getElementById("confirmarContraseniaError");
 let enviable;
 
+function ocultarErrores() {
+    nombreError.style.display = "none";
+    emailError.style.display = "none";
+    contraseniaError.style.display = "none";
+    confirmarContraseniaError.style.display = "none";
+}
+function mostrarError(elemento) {
+    elemento.style.display = "block";
+}
 function comprobarTieneLetra(cadena) {
     return /[A-Za-z]/.test(cadena);
 }
@@ -12,13 +21,24 @@ function comprobarTieneNumero(cadena) {
     return cadena.split("").some(caracter => !isNaN(caracter));
 }
 
+ocultarErrores();
+
 // Eventos
 // submit         Se envía el formulario
 // change (antes) Se termina de cambiar
 // input (ahora)  Se está cambiando
 formulario.addEventListener("input", () => {
+    const nombre = document.getElementById("nombre");
+    const email = document.getElementById("email");
+    const contrasenia = document.getElementById("contrasenia");
+    const confirmarContrasenia = document.getElementById("confirmarContrasenia");
+    let resultadoComprobacion = true;
+
+    ocultarErrores();
+
     if (nombre.value.length < 3) {
-        console.error("Nombre inválido");
+        mostrarError(nombreError);
+        resultadoComprobacion = false;
     }
 
     /*
@@ -35,18 +55,23 @@ formulario.addEventListener("input", () => {
       que solo sea una.
     */
     if (!email.value.includes("@")) {
-        console.log("E-mail inválido", email.value.includes("@"));
+        mostrarError(emailError);
+        resultadoComprobacion = false;
     }
 
     if (contrasenia.value.length < 8 ||
         !comprobarTieneLetra(contrasenia.value) ||
         !comprobarTieneNumero(contrasenia.value)){
-        console.error("Contraseña Invalida");
+        mostrarError(contraseniaError);
+        resultadoComprobacion = false;
     } else if (confirmarContrasenia.value.length >= 0 &&
-        contrasenia.value === confirmarContrasenia.value) {
-        console.error("Contraseñas no coinciden");
+        contrasenia.value !== confirmarContrasenia.value) {
+        mostrarError(confirmarContraseniaError);
+        resultadoComprobacion = false;
     }
+
+    enviable = resultadoComprobacion;
 });
 formulario.addEventListener("submit", evento => {
-    evento.preventDefault();
+    if (enviable) evento.preventDefault();
 });
