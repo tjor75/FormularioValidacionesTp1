@@ -12,6 +12,9 @@ body {
     margin: 0;
     
     background-image: url("img/istockphoto-1460853312-612x612.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 input:focus {
     box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
