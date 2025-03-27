@@ -84,8 +84,8 @@ confirmarContrasenia.addEventListener("input", () => {
         confirmarContrasenia.setAttribute(ATTR_VALID, FALSE); 
 });
 formulario.addEventListener("submit", evento => {
+    evento.preventDefault();
     if (validarTodo()) {
-        evento.preventDefault();
         alert("¡Usuario registrado exitosamente!");
     }
 });
