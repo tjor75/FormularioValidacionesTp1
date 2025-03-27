@@ -19,4 +19,7 @@ Programar estre formulario nos hizo acordar de funciones de JavaScript que vimos
 
 ## A mejorar
 
-_próximamente_
+* Incluir un botón para mostrar/ocultar la contraseña.
+* Guardar los datos en localStorage al registrarse exitosamente.
+* Agregar una sección donde se visualicen los usuarios registrados (obtenidos de localStorage).
+* Implementar un botón para borrar usuarios registrados.
