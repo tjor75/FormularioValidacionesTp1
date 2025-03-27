@@ -1,6 +1,6 @@
 # [TP 1] Formulario con validaciones
 
-por Uriel Engelberg y Lucas Tor
+por Uriel Engelberg y Lucas Tjor
 
 ## Diseño UX/UI
 Diseñamos la interfaz teniendo en cuenta que esta debía ser simple y minimalista. Nuestras prioridades fueron:
