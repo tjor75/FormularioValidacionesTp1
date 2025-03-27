@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
+* {
+    border-radius: 5px;
+}
 body, button, input {
     font-family: "Roboto Mono", sans-serif;
     font-weight: bold;
@@ -15,6 +18,10 @@ body {
     background-size: cover;
     background-position: center;
 }
+input {
+    border: solid 1px #0000ff;
+    outline: none;
+}
 input:focus {
     box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
 }
@@ -25,16 +32,22 @@ form {
     width: 80%;
     padding: 8px;
 }
-.columnas {
-    display: flex;
-    gap: 5px;
+p {
+    margin: 3px 0;
+    height: 0;
+    overflow-y: hidden;
+    animation: 2s;
 }
 div:has(> input) {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-p { margin: 3px 0; }
+
+.columnas {
+    display: flex;
+    gap: 5px;
+}
 
 #cambiarTema {
     font-size: 16px;
@@ -46,11 +59,12 @@ p { margin: 3px 0; }
     height: 30px;
     border: none;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 
 /* Light theme */
-[theme=light] form {
+[theme=light] form, [theme=light] input {
     background: #eaeaea;
     color: #151515;
 }
@@ -59,13 +73,30 @@ p { margin: 3px 0; }
 }
 
 /* Dark theme */
-[theme=dark] form {
+[theme=dark] form, [theme=dark] input {
     background: #151515;
     color: #eaeaea;
 }
 [theme=dark] #cambiarTema {
     background: #eaeaea;
 }
+
+
+input[type=submit] {
+    background: #0000ff;
+    color: #fff;
+}
+[valid="0"] {
+    border-color: #d30000;
+}
+[valid="0"] + p {
+    color: #d30000;
+    height: fit-content;
+}
+[valid="1"] {
+    border-color: #6dc500;
+}
+
 
 @media only screen and (max-width: 600px) {
     .columnas {
