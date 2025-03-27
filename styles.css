@@ -14,17 +14,61 @@ body {
     background-image: url("img/istockphoto-1460853312-612x612.jpg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
 }
 input:focus {
     box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
 }
 form {
-    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     width: 80%;
     padding: 8px;
+}
+.columnas {
+    display: flex;
+    gap: 5px;
 }
 div:has(> input) {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+p { margin: 3px 0; }
+
+#cambiarTema {
+    font-size: 16px;
+    position: fixed;
+    padding: 5px;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 100%;
+}
+
+
+/* Light theme */
+[theme=light] form {
+    background: #eaeaea;
+    color: #151515;
+}
+[theme=light] #cambiarTema {
+    background: #151515;
+}
+
+/* Dark theme */
+[theme=dark] form {
+    background: #151515;
+    color: #eaeaea;
+}
+[theme=dark] #cambiarTema {
+    background: #eaeaea;
+}
+
+@media only screen and (max-width: 600px) {
+    .columnas {
+        display: block;
+    }
 }

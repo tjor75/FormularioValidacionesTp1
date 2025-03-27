@@ -1,8 +1,12 @@
+const ATTR_THEME = "theme";
+const THEME_DARK_CLASS = "light";
+const THEME_LIGHT_CLASS = "dark";
 const formulario = document.getElementById("formulario");
 const nombreError = document.getElementById("nombreError");
 const emailError = document.getElementById("emailError");
 const contraseniaError = document.getElementById("contraseniaError");
 const confirmarContraseniaError = document.getElementById("confirmarContraseniaError");
+const cambiarTema = document.getElementById("cambiarTema");
 let enviable;
 
 function ocultarErrores() {
@@ -22,6 +26,17 @@ function comprobarTieneNumero(cadena) {
 }
 
 ocultarErrores();
+
+cambiarTema.addEventListener("click", () => {
+    const body = document.body;
+    if (body.getAttribute(ATTR_THEME) === THEME_DARK_CLASS) {
+        body.setAttribute(ATTR_THEME, THEME_LIGHT_CLASS);
+        cambiarTema.innerHTML = "&#x1F31A;";
+    } else {
+        body.setAttribute(ATTR_THEME, THEME_DARK_CLASS);
+        cambiarTema.innerHTML = "&#x1F31E;";
+    }
+});
 
 // Eventos
 // submit         Se envía el formulario
