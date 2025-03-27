@@ -86,5 +86,6 @@ confirmarContrasenia.addEventListener("input", () => {
 formulario.addEventListener("submit", evento => {
     if (validarTodo()) {
         evento.preventDefault();
+        alert("¡Usuario registrado exitosamente!");
     }
 });

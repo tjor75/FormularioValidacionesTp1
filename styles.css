@@ -25,7 +25,7 @@ input {
     border: solid 1px #0000ff;
     outline: none;
 }
-input:focus {
+form, input:focus {
     box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, 0.2);
 }
 form {
@@ -49,6 +49,7 @@ div:has(> input) {
 
 .columnas {
     display: flex;
+    flex-direction: row;
     gap: 5px;
 }
 
@@ -104,6 +105,6 @@ input[type=submit] {
 
 @media only screen and (max-width: 600px) {
     .columnas {
-        display: block;
+        flex-direction: column;
     }
 }
